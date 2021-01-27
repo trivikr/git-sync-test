@@ -1,0 +1,21 @@
+name: git-sync
+
+on:
+  # Triggers the workflow on push events but only for the main branch
+  push:
+    branches: [ main ]
+
+jobs:
+  git-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "trivikr/git-sync-test"
+          source_branch: "main"
+          destination_repo: ${{ secrets.GIT_SYNC_DESTINATION_REPO }} 
+          destination_branch: "main"
+          source_ssh_private_key: ${{ secrets.SOURCE_SSH_PRIVATE_KEY }}
+          destination_ssh_private_key:  ${{ secrets.DESTINATION_SSH_PRIVATE_KEY }}
