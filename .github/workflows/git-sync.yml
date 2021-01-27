@@ -12,7 +12,9 @@ jobs:
 
     steps:
       - name: git-sync
-        if: ${{ secrets.GIT_SYNC_DESTINATION_REPO }}
+        env:
+          git_sync_destination_repo: ${{ secrets.GIT_SYNC_DESTINATION_REPO }}
+        if: env.git_sync_destination_repo
         uses: wei/git-sync@v3
         with:
           source_repo: "trivikr/git-sync-test"
