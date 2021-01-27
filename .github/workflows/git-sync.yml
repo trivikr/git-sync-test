@@ -16,7 +16,7 @@ jobs:
         with:
           source_repo: "trivikr/git-sync-test"
           source_branch: "main"
-          destination_repo: "trivikr/private-git-sync-test" 
+          destination_repo: ${{ secrets.GIT_SYNC_DESTINATION_REPO }}
           destination_branch: "main"
           source_ssh_private_key: ${{ secrets.SOURCE_SSH_PRIVATE_KEY }}
           destination_ssh_private_key:  ${{ secrets.DESTINATION_SSH_PRIVATE_KEY }}
